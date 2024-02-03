@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+
+.App{
+    min-height: 100vh;
+    display: flex;
+    background-image: url("https://4kwallpapers.com/images/wallpapers/blue-abstract-blue-background-gradient-abstract-3840x2160-8985.jpg");
+    background-size: cover;
+    background-position: center;
+    color: black;
+}
