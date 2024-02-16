@@ -1,1 +1,1 @@
-# chat-o-pit
+# ChatterHub

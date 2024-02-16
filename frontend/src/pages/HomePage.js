@@ -1,9 +1,29 @@
-import React from "react";
-import { Box,Container,Text, Tab, Tabs, TabPanel, TabPanels, TabList } from "@chakra-ui/react";
+import {useEffect} from "react";
+import {
+  Box,
+  Container,
+  Text,
+  Tab,
+  Tabs,
+  TabPanel,
+  TabPanels,
+  TabList,
+} from "@chakra-ui/react";
 import Login from "../components/Authentication/Login";
 import SignUp from "../components/Authentication/SignUp";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const HomePage = () => {
+  const history = useHistory();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+    // setUser(userInfo);
+    if (user) {
+      history.push("/chats");
+    }
+  }, [history]);  
+
   return (
     <Container maxW="xl" centerContent>
       <Box
@@ -17,7 +37,7 @@ const HomePage = () => {
         borderWidth="1px"
       >
         <Text fontSize="4xl" fontFamily="Work sans">
-          Chat-O-Lingo
+          ChatterHub
         </Text>
       </Box>
       <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
@@ -28,10 +48,10 @@ const HomePage = () => {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <Login/>
+              <Login />
             </TabPanel>
             <TabPanel>
-              <SignUp/>
+              <SignUp />
             </TabPanel>
           </TabPanels>
         </Tabs>
