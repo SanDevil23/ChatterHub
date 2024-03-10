@@ -1,4 +1,3 @@
-import {useEffect} from "react";
 import {
   Box,
   Container,
@@ -9,9 +8,10 @@ import {
   TabPanels,
   TabList,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Login from "../components/Authentication/Login";
 import SignUp from "../components/Authentication/SignUp";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const HomePage = () => {
   const history = useHistory();
@@ -22,7 +22,7 @@ const HomePage = () => {
     if (user) {
       history.push("/chats");
     }
-  }, [history]);  
+  }, [history]);
 
   return (
     <Container maxW="xl" centerContent>
