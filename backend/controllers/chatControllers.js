@@ -3,7 +3,7 @@ const { use } = require("../routes/userRoutes");
 const Chat = require("../models/chatModel");
 const User = require("../models/userModel");
 
-const accessChat = asyncHandler(async (req, res) => {
+const accessChat = asyncHandler(async (req, res) => {                 // search user function at client side
   const { userId } = req.body;
 
   if (!userId) {
@@ -49,7 +49,7 @@ const accessChat = asyncHandler(async (req, res) => {
   }
 });
 
-const fetchChats = asyncHandler(async (req, res) => {
+const fetchChats = asyncHandler(async (req, res) => {                   // create chat function at client side
   try {
     Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
       .populate("users", "-password")
