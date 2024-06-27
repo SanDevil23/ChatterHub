@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
-import { ChatState } from "../../Context/ChatProvider";
-import { Box, Button, Stack, Text, useToast } from "@chakra-ui/react";
-import axios from "axios";
 import { AddIcon } from "@chakra-ui/icons";
+import { Box, Stack, Text } from "@chakra-ui/layout";
+import { useToast } from "@chakra-ui/toast";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { getSender } from "../../config/ChatLogics";
 import ChatLoading from "./ChatLoading";
+import GroupChatModal from "../miscellaneous/GroupChatModal";
+import { Button } from "@chakra-ui/react";
+import { ChatState } from "../../Context/ChatProvider";
 
-const MyChats = () => {
-  const [loggedUser, setLoggedUser] = useState("");
-  const { user, selectedChat, setSelectedChat, chats, setChats } = ChatState();
+const MyChats = ({ fetchAgain }) => {
+  const [loggedUser, setLoggedUser] = useState();
+
+  const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
   const toast = useToast();
 
@@ -38,8 +42,8 @@ const MyChats = () => {
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
-
-  }, []);
+    // eslint-disable-next-line
+  }, [fetchAgain]);
 
   return (
     <Box
@@ -62,14 +66,16 @@ const MyChats = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        MyChats
-        <Button
-          d="flex"
-          fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-          rightIcon={<AddIcon />}
-        >
-          New Group Chat
-        </Button>
+        My Chats
+        <GroupChatModal>
+          <Button
+            d="flex"
+            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+            rightIcon={<AddIcon />}
+          >
+            New Group Chat
+          </Button>
+        </GroupChatModal>
       </Box>
       <Box
         d="flex"
@@ -113,7 +119,6 @@ const MyChats = () => {
         ) : (
           <ChatLoading />
         )}
-
       </Box>
     </Box>
   );

@@ -109,7 +109,7 @@ const Login = () => {
       width="100%" 
       style={{marginTop: 15}} 
       onClick={()=>{
-        setEmail("guest@example.com");
+        setEmail("guestUser@gmail.com");
         setPassword("123456");
       }}>Get Guest User Credential
       </Button>
