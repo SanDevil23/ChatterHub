@@ -4,8 +4,21 @@
 .App{
     min-height: 100vh;
     display: flex;
-    background-image: url("https://4kwallpapers.com/images/wallpapers/blue-abstract-blue-background-gradient-abstract-3840x2160-8985.jpg");
+    background-color: rgb(16, 39, 98);
     background-size: cover;
     background-position: center;
     color: black;
 }
+
+::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0.281);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
