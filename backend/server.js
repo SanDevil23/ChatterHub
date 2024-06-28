@@ -8,6 +8,7 @@ const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes")
 
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
+const { Socket } = require("socket.io");
 
 dotenv.config();
 connectDB();
@@ -32,7 +33,22 @@ app.use(errorHandler);
 
 const port = process.env.PORT;
 
-app.listen(
+ const server = app.listen(
   port,
   console.log(`Server is up and running on PORT ${port}`.blue.bold)
 );
+
+const io = require('socket.io')(server, {
+  pingTimeout: 60000,
+  // to avoid any cross connection
+  cors:{
+    origin:"http://localhost:3000"
+  },
+});
+
+
+// create connection
+io.on("connection", (socket)=>{
+  console.log("Socket.io Connected !! ");
+});
+
