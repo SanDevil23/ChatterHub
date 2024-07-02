@@ -1,7 +1,7 @@
 import { FormControl } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
-// import "./styles.css";
+import "./styles.css";
 import { IconButton, Spinner, useToast } from "@chakra-ui/react";
 import { getSender, getSenderFull } from "../../config/ChatLogics";
 import { useEffect, useState } from "react";
@@ -185,7 +185,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   <ProfileModal
                     user={getSenderFull(user, selectedChat.users)}
                   />
-                </>
+                </>     
               ) : (
                 <>
                   {selectedChat.chatName.toUpperCase()}

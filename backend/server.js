@@ -50,5 +50,11 @@ const io = require('socket.io')(server, {
 // create connection
 io.on("connection", (socket)=>{
   console.log("Socket.io Connected !! ");
+
+  // establishing a separate socket for each user
+  socket.on('setup', (userData) => {
+    socket.join(userData._id);
+    socket.emit("connected");
+  })
 });
 

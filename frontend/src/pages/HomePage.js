@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Login from "../components/Authentication/Login";
 import SignUp from "../components/Authentication/SignUp";
+import "./pages.css";
 
 const HomePage = () => {
   const history = useHistory();
@@ -34,7 +35,7 @@ const HomePage = () => {
         borderRadius="lg"
         borderWidth="1px"
       >
-        <Text fontSize="4xl" fontFamily="Work sans">
+        <Text fontSize="4xl" fontWeight="45px" fontFamily="monospace">
           ChatterHub
         </Text>
       </Box>

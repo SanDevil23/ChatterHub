@@ -4,10 +4,10 @@
 .App{
     min-height: 100vh;
     display: flex;
-    background-color: rgb(16, 39, 98);
+    background-color: rgb(95, 220, 110);
     background-size: cover;
     background-position: center;
-    color: black;
+    /* color: black; */
 }
 
 ::-webkit-scrollbar {

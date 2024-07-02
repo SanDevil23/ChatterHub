@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/layout";
-// import "./styles.css";
+import "./styles.css";
 import SingleChat from "./SingleChat";
 import { ChatState } from "../../Context/ChatProvider";
 

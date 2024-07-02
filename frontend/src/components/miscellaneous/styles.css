@@ -1,0 +1,22 @@
+.messages {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    scrollbar-width: none;
+  }
+
+
+
+.primary-text{
+  color: rgb(9, 156, 27);
+  font-weight: 600;  
+  text-align: center;
+}
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0.281);
+  }
