@@ -26,8 +26,9 @@ const ScrollableChat = ({ messages }) => {
                   size="sm"
                   cursor="pointer"
                   name={m.sender.name}
-                  src={m.sender.pic}
+                  colorScheme="#E0E0E0"
                 />
+
               </Tooltip>
             )}
             <span

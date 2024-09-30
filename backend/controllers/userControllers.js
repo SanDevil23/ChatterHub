@@ -24,7 +24,9 @@ const registerUser = async (req, res) => {
     pic,
   });
 
-  if (User) {
+
+  //changes here
+  if (user) {
     res.status(201).json({
       _id: user._id,
       name: user.name,

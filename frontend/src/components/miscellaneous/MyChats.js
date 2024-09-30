@@ -84,12 +84,12 @@ const MyChats = ({ fetchAgain }) => {
         p={3}
         bg="#F8F8F8"
         w="100%"
-        h="100%"
+        h="inherit"
         borderRadius="lg"
         overflowY="hidden"
       >
         {chats ? (
-          <Stack overflowY="hidden">
+          <Stack overflowY="hidden" height="50vh">
             {chats.map((chat) => (
               <Box
                 onClick={() => setSelectedChat(chat)}

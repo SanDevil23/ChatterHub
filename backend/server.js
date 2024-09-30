@@ -15,6 +15,15 @@ connectDB();
 
 const app = express();
 
+const cors = require('cors');
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,                               
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+
+
 app.use(express.json()); //to accept json data
 
 app.get("/", (req, res) => {
@@ -55,6 +64,31 @@ io.on("connection", (socket)=>{
   socket.on('setup', (userData) => {
     socket.join(userData._id);
     socket.emit("connected");
-  })
+  });
+
+  socket.on("join chat", (room) => {
+    socket.join(room);
+    console.log("User Joined Room: " + room);
+  });
+  socket.on("typing", (room) => socket.in(room).emit("typing"));
+  socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));
+
+  socket.on("new message", (newMessageRecieved) => {
+    var chat = newMessageRecieved.chat;
+
+    if (!chat.users) return console.log("chat.users not defined");
+
+    chat.users.forEach((user) => {
+      if (user._id == newMessageRecieved.sender._id) return;
+
+      socket.in(user._id).emit("message recieved", newMessageRecieved);
+    });
+  });
+
+  socket.off("setup", () => {
+    console.log("USER DISCONNECTED");
+    socket.leave(userData._id);
+  });
+  
 });
 

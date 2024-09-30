@@ -38,6 +38,8 @@ const SideDrawer = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+
+  // logout
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
     history.push("/");
@@ -164,7 +166,7 @@ const SideDrawer = () => {
           <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
 
           <DrawerBody>
-            <Box d="flex" pb={2}>
+            <Box d="flex" pb={2} >
               <Input
                 placeholder="Search by name or email"
                 mr={2}
